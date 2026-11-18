@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ナンプレ｜ゆっくり、楽しく、脳トレ！</title>
+<title>なんちゃってナンプレ｜ゆっくり、楽しく、脳トレ！</title>
 <style>
 *{box-sizing:border-box}
 :root{color-scheme:light;--ink:#49280f;--wine:#890d38;--paper:#fffaf1;--line:#d6b58f;--pink:#f9d9e5;--gold:#f9dfac}
@@ -194,6 +194,18 @@ body::before,body::after{z-index:0;opacity:.55}
   transform:none;opacity:.46
  }
 }
+.brand h1{font-size:clamp(24px,6.5vw,72px);overflow-wrap:anywhere}
+@media(max-width:720px){
+ .game .brand h1{font-size:clamp(22px,7vw,30px)}
+}
+.brand h1{white-space:nowrap;overflow-wrap:normal;padding-bottom:var(--title-line-space,21px)}
+.brand h1::after{content:none}
+.brand-prefix{font-size:.8em}
+.brand-name{display:inline-block;position:relative}
+.brand-name::after{content:"";position:absolute;left:0;top:100%;width:100%;height:var(--title-line-height,16px);border-bottom:3px solid #da9c55;border-radius:50%;margin-top:-3px}
+.game .brand{justify-content:center;--title-line-height:9px;--title-line-space:6px}
+@media(max-width:720px){.game .brand{--title-line-height:8px;--title-line-space:9px}}
+
 </style>
 <main id="app"></main>
 <dialog id="modal" aria-labelledby="dialog-title"></dialog>
@@ -425,7 +437,7 @@ let puzzle, selected = -1, memo = false, level = 0, screen = '';
 const isWrong = (value,i) => !!value && value!==Number(puzzle.solution[i]);
 const warning = '数字が違います';
 const digits = [1,2,3,4,5,6,7,8,9];
-const brand = '<header class="brand"><h1>ナンプレ</h1><p>ゆっくり、楽しく、脳トレ！</p></header>';
+const brand = '<header class="brand"><h1><span class="brand-prefix">なんちゃって</span><span class="brand-name">ナンプレ</span></h1><p>ゆっくり、楽しく、脳トレ！</p></header>';
 const fresh = () => ({values:Array(81).fill(0),notes:Array(81).fill(0),done:false,updated:0});
 const state = () => data.records[puzzle.id] ??= fresh();
 
